@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.jfree.ui.RefineryUtilities;
 
 public class BandStructure{
 
@@ -115,7 +116,11 @@ public class BandStructure{
 	    }
 	}
 	br.close();
-	writeCSV(new File(f + "_GEN_CSV"));
+	//writeCSV(new File(f + "_GEN_CSV"));
+	BandScatterPlot window = new BandScatterPlot("Plot", "Lorem Ipsum", bandData);
+	window.pack();
+	RefineryUtilities.centerFrameOnScreen(window);
+	window.setVisible(true);
     }
 
     private void writeCSV(File csvFile) throws IOException{
@@ -145,7 +150,11 @@ public class BandStructure{
     public static void main(String[] args){
 	try{
 	    new BandStructure(args[0], args[1]);
+	} catch(IOException ioe){
+	    ioe.printStackTrace();
+	    throw new RuntimeException("IOException: " + ioe.getMessage());
 	} catch(Exception e){
+	    e.printStackTrace();
 	    throw new RuntimeException(e.getMessage());
 	}
     }
