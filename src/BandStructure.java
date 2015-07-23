@@ -124,8 +124,8 @@ public class BandStructure{
     }
 
     private void generatePlot(File f) throws IOException{
-	String windowTitle = "Plot";
-	String chartTitle = "Lorem Ipsum";
+	String windowTitle = "ABINIT BandStructure Plot";
+	String chartTitle = "Band Energies (Fermi level = 0)";
 	BandScatterPlot window = new BandScatterPlot(windowTitle, chartTitle, bandData);
 	window.pack();
 	RefineryUtilities.centerFrameOnScreen(window);
