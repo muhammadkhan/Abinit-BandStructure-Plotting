@@ -25,7 +25,7 @@ public class BandScatterPlot extends ApplicationFrame{
 					   "E (eV)",
 					   generateDataset(data),
 					   PlotOrientation.VERTICAL,
-					   true, true, false);
+					   false, true, false);
 	ChartPanel chartPanel = new ChartPanel(scatterplot);
 	chartPanel.setPreferredSize(new Dimension(WINDOW_X, WINDOW_Y));
 	XYPlot plotData = scatterplot.getXYPlot();
@@ -34,14 +34,14 @@ public class BandScatterPlot extends ApplicationFrame{
 
     private XYDataset generateDataset(Map<Integer, List<Double>> data){
 	int nBand = data.get(1).size();
-	XYSeries[] seriesArr = new XYSeries[data.size()];
-	for(int k = 0; k < seriesArr.length; k++)
-	    seriesArr[k] = new XYSeries("k-point: #" + (k+1));
+	XYSeries[] seriesArr = new XYSeries[nBand];
+	for(int i = 0; i < seriesArr.length; i++)
+	    seriesArr[i] = new XYSeries("Band #" + (i+1));
 
 	
 	for(int i = 0; i < nBand; i++){
 	    for(Integer kpt : data.keySet()){
-		XYSeries series = seriesArr[kpt - 1];
+		XYSeries series = seriesArr[i];
 		series.add(kpt, data.get(kpt).get(i));
 	    }
 	}
