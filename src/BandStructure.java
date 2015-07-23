@@ -9,6 +9,9 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.ChartUtilities;
+import org.jfree.chart.JFreeChart;
 import org.jfree.ui.RefineryUtilities;
 
 public class BandStructure{
@@ -116,11 +119,21 @@ public class BandStructure{
 	    }
 	}
 	br.close();
-	//writeCSV(new File(f + "_GEN_CSV"));
-	BandScatterPlot window = new BandScatterPlot("Plot", "Lorem Ipsum", bandData);
+	writeCSV(new File(f + "_GEN_CSV"));
+	generatePlot(in);
+    }
+
+    private void generatePlot(File f) throws IOException{
+	String windowTitle = "Plot";
+	String chartTitle = "Lorem Ipsum";
+	BandScatterPlot window = new BandScatterPlot(windowTitle, chartTitle, bandData);
 	window.pack();
 	RefineryUtilities.centerFrameOnScreen(window);
 	window.setVisible(true);
+	ChartPanel panel = (ChartPanel)window.getContentPane();
+	JFreeChart chart = panel.getChart();
+	String imgFName = f.getParent() + "/" + windowTitle + "_" + chartTitle;
+	ChartUtilities.saveChartAsPNG(new File(imgFName + ".png"),chart,BandScatterPlot.WINDOW_X, BandScatterPlot.WINDOW_Y);	
     }
 
     private void writeCSV(File csvFile) throws IOException{

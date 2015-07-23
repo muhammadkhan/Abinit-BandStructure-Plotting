@@ -1,8 +1,11 @@
 import java.awt.Color;
 import java.awt.Dimension;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import org.jfree.chart.ChartPanel;
+import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.plot.PlotOrientation;
@@ -15,11 +18,11 @@ import org.jfree.ui.ApplicationFrame;
 public class BandScatterPlot extends ApplicationFrame{
 
     private int nBand;
-    private static final int WINDOW_X = 560;
-    private static final int WINDOW_Y = 367;
+    protected static final int WINDOW_X = 560;
+    protected static final int WINDOW_Y = 367;
 
     public BandScatterPlot(String windowTitle, String chartTitle,
-			   Map<Integer, List<Double>> data){
+			   Map<Integer, List<Double>> data) throws IOException{
 	super(windowTitle);
 	nBand = data.get(1).size();
 	JFreeChart scatterplot =
