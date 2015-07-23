@@ -15,6 +15,11 @@ public class BandStructure{
     private boolean kptScanMode = false;
     private double fermi = FERMI_NULL;
     private int nkpt;
+
+    /**
+     * key = k-point number
+     * value = energy of each band at that k-point
+     */
     private Map<Integer, List<Double>> bandData;
     private static final double FERMI_NULL   = Double.MAX_VALUE;
     private static final String FERMI_PREFIX = "Fermi";
