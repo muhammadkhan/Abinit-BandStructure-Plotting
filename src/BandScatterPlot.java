@@ -1,7 +1,14 @@
+import java.awt.Dimension;
 import java.util.List;
 import java.util.Map;
+import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.ChartFactory;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.data.xy.XYDataset;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 import org.jfree.ui.ApplicationFrame;
 
 public class BandScatterPlot extends ApplicationFrame{
@@ -33,7 +40,7 @@ public class BandScatterPlot extends ApplicationFrame{
 
 	
 	for(int i = 0; i < nBand; i++){
-	    for(Integer kpt : data.getKeySet()){
+	    for(Integer kpt : data.keySet()){
 		XYSeries series = seriesArr[kpt];
 		series.add(kpt, data.get(kpt).get(i));
 	    }

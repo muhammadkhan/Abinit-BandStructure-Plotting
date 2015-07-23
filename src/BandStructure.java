@@ -115,7 +115,11 @@ public class BandStructure{
 	    }
 	}
 	br.close();
-	BufferedWriter bwCSV = new BufferedWriter(new FileWriter(new File(f + "_GEN.csv")));
+	writeCSV(new File(f + "_GEN_CSV"));
+    }
+
+    private void writeCSV(File csvFile) throws IOException{
+	BufferedWriter bwCSV = new BufferedWriter(new FileWriter(csvFile));
 	bwCSV.write("kpt,"+delimit(genRange(1,bandData.get(1).size()), ",", "Band "));
 	bwCSV.newLine();
 	for(Integer k : bandData.keySet()){
